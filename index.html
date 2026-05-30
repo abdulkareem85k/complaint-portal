@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mumbai Civic Complaint Portal</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+ 
+  <!-- =================== NAVBAR =================== -->
+  <header class="navbar" id="navbar">
+    <div class="nav-inner">
+      <!-- Logo -->
+      <div class="nav-logo">
+        <div class="logo-icon">🏙️</div>
+        <div>
+          <span class="logo-title">Mumbai Civic</span>
+          <span class="logo-sub">Complaint Portal</span>
+        </div>
+      </div>
+      
+ 
+      <!-- Desktop Nav Links -->
+      <nav class="nav-links" id="navLinks">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#report" class="nav-link">Report Issue</a>
+        <a href="#complaints" class="nav-link">View Complaints</a>
+        <a href="#about" class="nav-link">About</a>
+      </nav>
+ 
+      <!-- Right controls -->
+      <div class="nav-controls">
+        <!-- Dark/Light Toggle -->
+        <button class="theme-toggle" id="themeToggle" title="Toggle Theme" aria-label="Toggle dark/light mode">
+          <i data-lucide="sun" class="icon-sun"></i>
+          <i data-lucide="moon" class="icon-moon"></i>
+        </button>
+        <!-- Hamburger (mobile) -->
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+ 
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <button class="drawer-close" id="drawerClose" aria-label="Close menu">✕</button>
+    <nav class="drawer-links">
+      <a href="#home" class="drawer-link">🏠 Home</a>
+      <a href="#report" class="drawer-link">📝 Report Issue</a>
+      <a href="#complaints" class="drawer-link">📋 View Complaints</a>
+      <a href="#about" class="drawer-link">ℹ️ About</a>
+    </nav>
+  </div>
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+ 
+  <!-- =================== HERO =================== -->
+  <section class="hero" id="home">
+    <div class="hero-bg-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">🇮🇳 Serving Mumbai Citizens</div>
+      <h1 class="hero-title">
+        Report Local Problems,<br/>
+        <span class="accent-text">Improve Your City.</span>
+      </h1>
+      <p class="hero-tagline">
+        Report neighborhood issues and help improve your community. Your voice matters — every complaint brings Mumbai one step closer to a better tomorrow.
+      </p>
+      <div class="hero-actions">
+        <a href="#report" class="btn btn-primary">
+          <i data-lucide="plus-circle"></i> Report an Issue
+        </a>
+        <a href="#complaints" class="btn btn-outline">
+          <i data-lucide="list"></i> View All Complaints
+        </a>
+      </div>
+      <!-- Stats bar -->
+      <div class="stats-bar">
+        <div class="stat-item">
+          <span class="stat-num" id="statTotal">0</span>
+          <span class="stat-label">Total Reports</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num" id="statPending">0</span>
+          <span class="stat-label">Pending</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num" id="statResolved">0</span>
+          <span class="stat-label">Resolved</span>
+        </div>
+      </div>
+    </div>
+<!-- Hero Image -->
+<div class="hero-illustration">
+  <div class="hero-image-card">
+    <img 
+      src="https://images.financialexpressdigital.com/2025/12/nhdjd-39.jpg" 
+      alt="Mumbai Civic Issues"
+      class="hero-side-image"
+    />
+  </div>
+</div>
+  </section>
+ 
+  <!-- =================== ISSUE TYPES STRIP =================== -->
+  <section class="issue-strip">
+    <div class="container">
+      <div class="strip-label">Common Issues We Handle</div>
+      <div class="issue-chips">
+        <div class="chip">🗑️ Garbage Overflow</div>
+        <div class="chip">💡 Broken Streetlight</div>
+        <div class="chip">🛣️ Damaged Road</div>
+        <div class="chip">💧 Water Leakage</div>
+        <div class="chip">🕳️ Open Drain</div>
+        <div class="chip">⚡ Electric Wire</div>
+        <div class="chip">🚧 Pothole</div>
+        <div class="chip">➕ Other Issues</div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- =================== COMPLAINT FORM =================== -->
+  <section class="section" id="report">
+    <div class="container narrow">
+      <div class="section-header">
+        <div class="section-badge">📝 Submit a Report</div>
+        <h2 class="section-title">Report a Civic Issue</h2>
+        <p class="section-sub">
+  Fill out the form below. We'll register your complaint and track it until it's resolved.
+  <br><br>
+  नीचे दिया गया फॉर्म भरें। हम आपकी शिकायत दर्ज करेंगे और उसके समाधान तक उसकी स्थिति को ट्रैक करेंगे।
+</p>
+      </div>
+ 
+      <!-- The Form Card -->
+      <div class="form-card" id="formCard">
+        <form id="complaintForm" novalidate>
+ 
+          <!-- Row 1: Name + Phone -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fullName">
+  Full Name / पूरा नाम <span class="required">*</span>
+</label>
+              <div class="input-wrap">
+                <i data-lucide="user" class="input-icon"></i>
+                <input type="text" id="fullName" name="fullName" placeholder="e.g. Hamza Khan" required/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="phone">
+  Phone Number / फोन नंबर <span class="required">*</span>
+</label>
+              <div class="input-wrap">
+                <i data-lucide="phone" class="input-icon"></i>
+                <input type="tel" id="phone" name="phone" placeholder="10-digit mobile number" required/>
+              </div>
+            </div>
+          </div>
+ 
+          <!-- Issue Type -->
+          <div class="form-group">
+            <label for="issueType">
+  Issue Type / समस्या का प्रकार <span class="required">*</span>
+</label>
+            <div class="input-wrap select-wrap">
+              <i data-lucide="alert-triangle" class="input-icon"></i>
+              <select id="issueType" name="issueType" required>
+                <option value="" disabled selected>Select type of issue… / समस्या का प्रकार चुनें…</option>
+                <option value="Garbage Overflow">🗑️ Garbage Overflow / कचरे का ढेर</option>
+
+<option value="Broken Streetlight">💡 Broken Streetlight / खराब स्ट्रीटलाइट</option>
+
+<option value="Damaged Road">🛣️ Damaged Road / क्षतिग्रस्त सड़क</option>
+
+<option value="Water Leakage">💧 Water Leakage / पानी का रिसाव</option>
+
+<option value="Open Drain">🕳️ Open Drain / खुली नाली</option>
+
+<option value="Electric Wire Damage">⚡ Electric Wire Damage / बिजली के तार की खराबी</option>
+
+<option value="Pothole">🚧 Pothole / सड़क का गड्ढा</option>
+
+<option value="Other">➕ Other / अन्य</option>
+              </select>
+            </div>
+          </div>
+ 
+          <!-- Description -->
+          <div class="form-group">
+            <label for="description">
+  Short Description / संक्षिप्त विवरण <span class="required">*</span>
+</label>
+            <textarea id="description" name="description" rows="4" placeholder="Describe the issue clearly — what happened, since when, how severe…" required></textarea>
+            <span class="char-count" id="charCount">0 / 300</span>
+          </div>
+ 
+          <!-- Location -->
+          <div class="form-group">
+            <label for="location">
+  Location / स्थान <span class="required">*</span>
+</label>
+            <div class="input-wrap">
+              <i data-lucide="map-pin" class="input-icon"></i>
+              <input type="text" id="location" name="location" placeholder="e.g. Near Marol Metro  Station, Ward 78, Mumbai" required/>
+            </div>
+          </div>
+ 
+          <!-- Photo Upload -->
+          <div class="form-group">
+           <label for="photo">
+  Upload Photo / फोटो अपलोड करें
+  <span class="optional">(optional / वैकल्पिक)</span>
+</label>
+            <div class="upload-zone" id="uploadZone">
+              <input type="file" id="photo" name="photo" accept="image/*" hidden/>
+              <div class="upload-placeholder" id="uploadPlaceholder">
+                <i data-lucide="camera" style="width:32px;height:32px;color:var(--accent)"></i>
+                <p>Click to upload a photo of the issue</p>
+                <span>JPG, PNG, WEBP up to 5MB</span>
+              </div>
+              <img id="photoPreview" class="photo-preview" alt="Preview" style="display:none"/>
+            </div>
+          </div>
+ 
+          <!-- Submit -->
+          <button type="submit" class="btn btn-primary btn-submit" id="submitBtn">
+            <span id="submitText">
+  <i data-lucide="send"></i>
+  Submit Complaint / शिकायत दर्ज करें
+</span>
+            <span id="submitLoader" style="display:none" class="loader-dots">
+              <span></span><span></span><span></span>
+            </span>
+          </button>
+ 
+        </form>
+      </div>
+ 
+      <!-- Success Card (hidden by default) -->
+      <div class="success-card" id="successCard" style="display:none">
+        <div class="success-icon">✅</div>
+        <h3>Complaint Submitted Successfully!</h3>
+        <p>Your complaint has been registered. Track its status in the <strong>View Complaints</strong> section below.</p>
+        <div class="complaint-id-box">
+          Complaint ID: <strong id="generatedId">—</strong>
+        </div>
+        <div class="success-actions">
+          <button class="btn btn-primary" onclick="submitAnother()">Submit Another</button>
+          <a href="#complaints" class="btn btn-outline">View All Complaints</a>
+        </div>
+      </div>
+ 
+    </div>
+  </section>
+ 
+  <!-- =================== VIEW COMPLAINTS =================== -->
+  <section class="section section-alt" id="complaints">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">📋 Complaint Board</div>
+        <h2 class="section-title">All Submitted Complaints</h2>
+        <p class="section-sub">Browse, search, and filter all civic complaints reported by citizens.</p>
+      </div>
+ 
+      <!-- Search + Filter Bar -->
+      <div class="filter-bar">
+        <div class="search-wrap">
+          <i data-lucide="search" class="search-icon"></i>
+          <input type="text" id="searchInput" placeholder="Search by location or issue type…" />
+        </div>
+        <div class="filter-group">
+          <select id="statusFilter">
+            <option value="">All Statuses</option>
+            <option value="Pending">Pending</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Resolved">Resolved</option>
+          </select>
+          <select id="typeFilter">
+            <option value="">All Issue Types</option>
+            <option value="Garbage Overflow">Garbage Overflow</option>
+            <option value="Broken Streetlight">Broken Streetlight</option>
+            <option value="Damaged Road">Damaged Road</option>
+            <option value="Water Leakage">Water Leakage</option>
+            <option value="Open Drain">Open Drain</option>
+            <option value="Electric Wire Damage">Electric Wire Damage</option>
+            <option value="Pothole">Pothole</option>
+            <option value="Other">Other</option>
+          </select>
+          <button class="btn btn-sm btn-outline" id="clearFilters">Clear</button>
+        </div>
+      </div>
+ 
+      <!-- Results Count -->
+      <div class="results-meta" id="resultsMeta"></div>
+ 
+      <!-- Cards Grid -->
+      <div class="complaints-grid" id="complaintsGrid">
+        <!-- Populated by JS -->
+      </div>
+ 
+      <!-- Empty State -->
+      <div class="empty-state" id="emptyState" style="display:none">
+        <div class="empty-icon">📭</div>
+        <h3>No Complaints Found</h3>
+        <p>Try adjusting your filters, or be the first to report an issue!</p>
+        <a href="#report" class="btn btn-primary">Report an Issue</a>
+      </div>
+ 
+    </div>
+  </section>
+ 
+  <!-- =================== ABOUT =================== -->
+  <section class="section" id="about">
+    <div class="container narrow">
+      <div class="section-header">
+        <div class="section-badge">ℹ️ About</div>
+        <h2 class="section-title">About This Portal</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-icon">🎯</div>
+          <h4>Our Mission</h4>
+          <p>Empower every Mumbai citizen to report civic issues quickly and transparently, making the city more livable for all.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">🔒</div>
+          <h4>Your Privacy</h4>
+          <p>All complaint data is stored locally in your browser. No data is sent to any server — your information stays with you.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">🤝</div>
+          <h4>Community First</h4>
+          <p>Built for NGOs, resident welfare associations, and citizens who want to take an active role in shaping their neighborhoods.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">⚡</div>
+          <h4>Easy & Fast</h4>
+          <p>Submit a complaint in under 2 minutes. No login required. Works on all devices — phone, tablet, or desktop.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- =================== FOOTER =================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="logo-icon">🏙️</span>
+          <div>
+            <span class="footer-title">Mumbai Civic Complaint Portal</span>
+            <span class="footer-tagline">Report local problems and help improve your neighborhood.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
+ 
